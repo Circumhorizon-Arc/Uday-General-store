@@ -1,10 +1,10 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
 import { useLanguage } from '@/lib/context/LanguageContext'
 import { Product } from '@/lib/data/products'
 import { addToCart } from '@/lib/utils/storage'
+import { getImageUrl } from '@/lib/utils/image-helpers'
 import { useState } from 'react'
 
 interface ProductCardProps {
@@ -14,6 +14,7 @@ interface ProductCardProps {
 export default function ProductCard({ product }: ProductCardProps) {
     const { language, t } = useLanguage()
     const [adding, setAdding] = useState(false)
+    const [imageError, setImageError] = useState(false)
 
     const productName = language === 'hi' ? product.nameHi : product.nameEn
     const isLowStock = product.stock > 0 && product.stock <= 10
@@ -35,11 +36,16 @@ export default function ProductCard({ product }: ProductCardProps) {
         <div className="bg-white rounded-xl shadow-soft hover:shadow-lg transition-all duration-300 overflow-hidden group">
             <Link href={`/product/${product.id}`} className="block relative aspect-square overflow-hidden bg-gray-100">
                 <div className="w-full h-full flex items-center justify-center p-4">
-                    {product.image && (product.image.startsWith('data:') || product.image.startsWith('http')) ? (
+                    {!imageError && product.image && (product.image.startsWith('data:') || product.image.startsWith('http') || product.image.startsWith('/')) ? (
                         <img
-                            src={product.image}
+                            src={getImageUrl(product.image)}
                             alt={productName}
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            onError={() => {
+                                console.error('Failed to load image:', product.image)
+                                setImageError(true)
+                            }}
+                            loading="lazy"
                         />
                     ) : (
                         <div className="text-6xl">🛒</div>

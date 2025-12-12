@@ -10,6 +10,7 @@ import ProductCard from '@/components/customer/ProductCard'
 import { getActiveProducts } from '@/lib/utils/data-helpers'
 import { Product } from '@/lib/data/products'
 import { addToCart } from '@/lib/utils/storage'
+import { getImageUrl } from '@/lib/utils/image-helpers'
 
 export default function ProductDetailPage({ params }: { params: Promise<{ id: string }> }) {
     const resolvedParams = use(params)
@@ -17,6 +18,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
     const router = useRouter()
     const [quantity, setQuantity] = useState(1)
     const [adding, setAdding] = useState(false)
+    const [imageError, setImageError] = useState(false)
     const [products, setProducts] = useState<Product[]>([])
     const [product, setProduct] = useState<Product | null>(null)
 
@@ -88,11 +90,16 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8">
                             {/* Product Image */}
                             <div className="aspect-square bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden">
-                                {product.image && (product.image.startsWith('data:') || product.image.startsWith('http')) ? (
+                                {!imageError && product.image && (product.image.startsWith('data:') || product.image.startsWith('http') || product.image.startsWith('/')) ? (
                                     <img
-                                        src={product.image}
+                                        src={getImageUrl(product.image)}
                                         alt={productName}
                                         className="w-full h-full object-cover"
+                                        onError={() => {
+                                            console.error('Failed to load image:', product.image)
+                                            setImageError(true)
+                                        }}
+                                        loading="eager"
                                     />
                                 ) : (
                                     <div className="text-9xl">🛒</div>
