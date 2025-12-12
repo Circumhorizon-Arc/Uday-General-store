@@ -23,7 +23,7 @@ export const products: Product[] = [
         price: 385,
         category: 'groceries',
         stock: 45,
-        image: '/images/products/aashirvaad-atta.jpg',
+        image: '/images/Aashirvaad atta.jpeg',
         brand: 'Aashirvaad',
         weight: '10 kg'
     },
@@ -36,7 +36,7 @@ export const products: Product[] = [
         price: 22,
         category: 'groceries',
         stock: 120,
-        image: '/images/products/tata-salt.jpg',
+        image: '/images/tata salt.jpeg',
         brand: 'Tata',
         weight: '1 kg'
     },
@@ -49,7 +49,7 @@ export const products: Product[] = [
         price: 185,
         category: 'groceries',
         stock: 30,
-        image: '/images/products/fortune-oil.jpg',
+        image: '/images/fortune sunflower oil.jpeg',
         brand: 'Fortune',
         weight: '1 L'
     },
@@ -62,7 +62,7 @@ export const products: Product[] = [
         price: 625,
         category: 'groceries',
         stock: 25,
-        image: '/images/products/basmati-rice.jpg',
+        image: '/images/India gate basmati rice.jpeg',
         brand: 'India Gate',
         weight: '5 kg'
     },
@@ -75,7 +75,7 @@ export const products: Product[] = [
         price: 145,
         category: 'groceries',
         stock: 50,
-        image: '/images/products/toor-dal.jpg',
+        image: '/images/Toor dal.jpeg',
         brand: 'Local',
         weight: '1 kg'
     },
@@ -90,7 +90,7 @@ export const products: Product[] = [
         price: 27,
         category: 'dairy',
         stock: 80,
-        image: '/images/products/amul-milk.jpg',
+        image: '/images/amul taaza toned milk.jpeg',
         brand: 'Amul',
         weight: '500 ml'
     },
@@ -103,7 +103,7 @@ export const products: Product[] = [
         price: 56,
         category: 'dairy',
         stock: 60,
-        image: '/images/products/amul-butter.jpg',
+        image: '/images/Amul butter.jpeg',
         brand: 'Amul',
         weight: '100 g'
     },
@@ -116,7 +116,7 @@ export const products: Product[] = [
         price: 30,
         category: 'dairy',
         stock: 40,
-        image: '/images/products/mother-dairy-curd.jpg',
+        image: '/images/Mother dairy curd.jpeg',
         brand: 'Mother Dairy',
         weight: '400 g'
     },
@@ -129,7 +129,7 @@ export const products: Product[] = [
         price: 135,
         category: 'dairy',
         stock: 35,
-        image: '/images/products/amul-cheese.jpg',
+        image: '/images/amul cheese slice.jpeg',
         brand: 'Amul',
         weight: '200 g'
     },
@@ -144,7 +144,7 @@ export const products: Product[] = [
         price: 10,
         category: 'snacks',
         stock: 200,
-        image: '/images/products/parle-g.jpg',
+        image: '/images/parle g biscuit.jpeg',
         brand: 'Parle',
         weight: '100 g'
     },
@@ -157,7 +157,7 @@ export const products: Product[] = [
         price: 14,
         category: 'snacks',
         stock: 150,
-        image: '/images/products/maggi.jpg',
+        image: '/images/Maggi.jpeg',
         brand: 'Maggi',
         weight: '70 g'
     },
@@ -170,7 +170,7 @@ export const products: Product[] = [
         price: 20,
         category: 'snacks',
         stock: 100,
-        image: '/images/products/kurkure.jpg',
+        image: '/images/Kurkure Masala Munch.jpeg',
         brand: 'Kurkure',
         weight: '85 g'
     },
@@ -183,7 +183,7 @@ export const products: Product[] = [
         price: 45,
         category: 'snacks',
         stock: 70,
-        image: '/images/products/haldiram-bhujia.jpg',
+        image: '/images/haldiram bhujia.jpeg',
         brand: 'Haldiram\'s',
         weight: '200 g'
     },
@@ -196,7 +196,7 @@ export const products: Product[] = [
         price: 40,
         category: 'beverages',
         stock: 90,
-        image: '/images/products/coca-cola.jpg',
+        image: '/images/coca cola.jpeg',
         brand: 'Coca-Cola',
         weight: '750 ml'
     },
@@ -209,7 +209,7 @@ export const products: Product[] = [
         price: 225,
         category: 'beverages',
         stock: 40,
-        image: '/images/products/bru-coffee.jpg',
+        image: '/images/bru instant coffee.jpeg',
         brand: 'Bru',
         weight: '200 g'
     },
@@ -224,7 +224,7 @@ export const products: Product[] = [
         price: 38,
         category: 'personalCare',
         stock: 85,
-        image: '/images/products/dettol-soap.jpg',
+        image: '/images/dettol soap.jpeg',
         brand: 'Dettol',
         weight: '125 g'
     },
@@ -237,7 +237,7 @@ export const products: Product[] = [
         price: 85,
         category: 'personalCare',
         stock: 95,
-        image: '/images/products/colgate.jpg',
+        image: '/images/colgate toothpaste.jpeg',
         brand: 'Colgate',
         weight: '200 g'
     },
@@ -250,7 +250,7 @@ export const products: Product[] = [
         price: 95,
         category: 'personalCare',
         stock: 60,
-        image: '/images/products/clinic-plus.jpg',
+        image: '/images/clinic plus shampoo.jpeg',
         brand: 'Clinic Plus',
         weight: '340 ml'
     },
@@ -263,7 +263,7 @@ export const products: Product[] = [
         price: 35,
         category: 'personalCare',
         stock: 75,
-        image: '/images/products/lux-soap.jpg',
+        image: '/images/lux soap.jpeg',
         brand: 'Lux',
         weight: '125 g'
     },
@@ -276,7 +276,7 @@ export const products: Product[] = [
         price: 285,
         category: 'household',
         stock: 30,
-        image: '/images/products/surf-excel.jpg',
+        image: '/images/surf excel quick wash.jpeg',
         brand: 'Surf Excel',
         weight: '2 kg'
     },
