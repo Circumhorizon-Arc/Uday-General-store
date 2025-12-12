@@ -276,7 +276,7 @@ export const products: Product[] = [
         price: 285,
         category: 'household',
         stock: 30,
-        image: '/images/SurfExcel.jpeg',
+        image: '/images/SurfExcelEasyWash.jpeg',
         brand: 'Surf Excel',
         weight: '2 kg'
     },
