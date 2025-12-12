@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useLanguage } from '@/lib/context/LanguageContext'
 import Navbar from '@/components/customer/Navbar'
@@ -91,8 +92,14 @@ export default function CartPage() {
                                     <div key={item.productId} className="bg-white rounded-xl shadow-soft p-6">
                                         <div className="flex gap-4">
                                             {/* Product Image */}
-                                            <div className="w-24 h-24 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                                                <div className="text-4xl">🛒</div>
+                                            <div className="w-24 h-24 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
+                                                <Image
+                                                    src={item.product.image}
+                                                    alt={productName}
+                                                    width={96}
+                                                    height={96}
+                                                    className="w-full h-full object-cover"
+                                                />
                                             </div>
 
                                             {/* Product Info */}
