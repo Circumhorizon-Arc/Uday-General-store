@@ -11,6 +11,7 @@ import { getActiveProducts } from '@/lib/utils/data-helpers'
 import { Product } from '@/lib/data/products'
 import { addToCart } from '@/lib/utils/storage'
 import { getImageUrl } from '@/lib/utils/image-helpers'
+import { getProductImageWithFallback } from '@/lib/utils/product-image-helpers'
 
 export default function ProductDetailPage({ params }: { params: Promise<{ id: string }> }) {
     const resolvedParams = use(params)
@@ -90,20 +91,23 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8">
                             {/* Product Image */}
                             <div className="aspect-square bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden">
-                                {!imageError && product.image && (product.image.startsWith('data:') || product.image.startsWith('http') || product.image.startsWith('/')) ? (
-                                    <img
-                                        src={getImageUrl(product.image)}
-                                        alt={productName}
-                                        className="w-full h-full object-cover"
-                                        onError={() => {
-                                            console.error('Failed to load image:', product.image)
-                                            setImageError(true)
-                                        }}
-                                        loading="eager"
-                                    />
-                                ) : (
-                                    <div className="text-9xl">🛒</div>
-                                )}
+                                {(() => {
+                                    const imageToUse = getProductImageWithFallback(product.image, product.id)
+                                    return !imageError && imageToUse && (imageToUse.startsWith('data:') || imageToUse.startsWith('http') || imageToUse.startsWith('/')) ? (
+                                        <img
+                                            src={getImageUrl(imageToUse)}
+                                            alt={productName}
+                                            className="w-full h-full object-cover"
+                                            onError={() => {
+                                                console.error('Failed to load image:', imageToUse)
+                                                setImageError(true)
+                                            }}
+                                            loading="eager"
+                                        />
+                                    ) : (
+                                        <div className="text-9xl">🛒</div>
+                                    )
+                                })()}
                             </div>
 
                             {/* Product Info */}

@@ -5,6 +5,7 @@ import { useLanguage } from '@/lib/context/LanguageContext'
 import { Product } from '@/lib/data/products'
 import { addToCart } from '@/lib/utils/storage'
 import { getImageUrl } from '@/lib/utils/image-helpers'
+import { getProductImageWithFallback } from '@/lib/utils/product-image-helpers'
 import { useState } from 'react'
 
 interface ProductCardProps {
@@ -36,20 +37,23 @@ export default function ProductCard({ product }: ProductCardProps) {
         <div className="bg-white rounded-xl shadow-soft hover:shadow-lg transition-all duration-300 overflow-hidden group">
             <Link href={`/product/${product.id}`} className="block relative aspect-square overflow-hidden bg-gray-100">
                 <div className="w-full h-full flex items-center justify-center p-4">
-                    {!imageError && product.image && (product.image.startsWith('data:') || product.image.startsWith('http') || product.image.startsWith('/')) ? (
-                        <img
-                            src={getImageUrl(product.image)}
-                            alt={productName}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                            onError={() => {
-                                console.error('Failed to load image:', product.image)
-                                setImageError(true)
-                            }}
-                            loading="lazy"
-                        />
-                    ) : (
-                        <div className="text-6xl">🛒</div>
-                    )}
+                    {(() => {
+                        const imageToUse = getProductImageWithFallback(product.image, product.id)
+                        return !imageError && imageToUse && (imageToUse.startsWith('data:') || imageToUse.startsWith('http') || imageToUse.startsWith('/')) ? (
+                            <img
+                                src={getImageUrl(imageToUse)}
+                                alt={productName}
+                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                onError={() => {
+                                    console.error('Failed to load image:', imageToUse)
+                                    setImageError(true)
+                                }}
+                                loading="lazy"
+                            />
+                        ) : (
+                            <div className="text-6xl">🛒</div>
+                        )
+                    })()}
                 </div>
 
                 {/* Stock Badge */}

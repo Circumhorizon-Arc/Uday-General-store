@@ -60,7 +60,7 @@ export default function AdminProductsPage() {
                 price: 0,
                 category: 'groceries',
                 stock: 0,
-                image: '/images/products/placeholder.jpg',
+                image: '',
                 brand: '',
                 weight: ''
             })
